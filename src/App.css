@@ -1,6 +1,6 @@
 /* app.css */
 body {
-    background-color: #c2a0db; /* Purple color */
+    background-color: #B7A4EE; /* Purple color */
     margin: 0; /* Remove default margin */
     padding: 0; /* Remove default padding */
   }
@@ -10,8 +10,8 @@ body {
   }
   
   .App h1 {
-    font-size: 2em;
-    text-align: center;
+    font-size: 20em;
+    text-align: left;
     color: #ffffff; /* White text color */
   }
   
