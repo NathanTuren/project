@@ -17,12 +17,12 @@ function App() {
       <div className="App">
         <h1>DivideWell</h1>
         <div className="landing-buttons">
-          <button onClick={() => navigateTo('/Add-Event')}>Bill Form</button>
+          <button onClick={() => navigateTo('/AddEvent')}>Add Event</button>
           <button onClick={() => navigateTo('/person-form')}>Person Form</button>
           <button onClick={() => navigateTo('/bill-summary')}>Bill Summary</button>
         </div>
         <div>
-          <button className='tester-button' onClick={() => navigateTo('/Test-Button')}>Test Button</button>
+          <button className='tester-button' onClick={() => navigateTo('/AddEvent')}>Test Button</button>
         </div>
       </div>
     );
@@ -32,7 +32,7 @@ function App() {
 
   const renderRoute = () => {
     switch (route) {
-      case '/bill-form':
+      case '/AddEvent':
         return <AddEvent />;
       case '/person-form':
         return <PersonForm />;
