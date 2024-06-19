@@ -40,6 +40,6 @@ function CostInput() {
   );
 }
 
-export default AddEvent;
+export {AddEvent, CostInput};
 
 
