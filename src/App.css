@@ -1,0 +1,17 @@
+/* app.css */
+body {
+    background-color: #c2a0db; /* Purple color */
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+  }
+  
+  .App {
+    padding: 20px;
+  }
+  
+  .App h1 {
+    font-size: 2em;
+    text-align: center;
+    color: #ffffff; /* White text color */
+  }
+  
