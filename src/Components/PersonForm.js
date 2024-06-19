@@ -1,4 +1,3 @@
-// components/PersonForm.js
 import React from 'react';
 
 function PersonForm() {
@@ -6,6 +5,8 @@ function PersonForm() {
     <div>
       <h2>Person Form</h2>
       {/* Form for person input */}
+      
+      <button onClick={() => window.location.href = '/'}>Home</button> {/* Home button */}
     </div>
   );
 }

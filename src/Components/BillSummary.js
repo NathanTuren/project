@@ -6,6 +6,7 @@ function BillSummary() {
     <div>
       <h2>Bill Summary</h2>
       {/* Summary of bill */}
+      <button onClick={() => window.location.href = '/'}>Home</button> {/* Home button */}
     </div>
   );
 }
