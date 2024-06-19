@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './App.css'; // Import app.css file for styles
-import BillForm from './Components/BillForm';
+import AddEvent from './Components/AddEvent';
 import PersonForm from './Components/PersonForm';
 import BillSummary from './Components/BillSummary';
 
@@ -17,7 +17,7 @@ function App() {
       <div className="App">
         <h1>Bill Splitter</h1>
         <div className="landing-buttons">
-          <button onClick={() => navigateTo('/bill-form')}>Bill Form</button>
+          <button onClick={() => navigateTo('/Add-Event')}>Bill Form</button>
           <button onClick={() => navigateTo('/person-form')}>Person Form</button>
           <button onClick={() => navigateTo('/bill-summary')}>Bill Summary</button>
         </div>
@@ -28,7 +28,7 @@ function App() {
   const renderRoute = () => {
     switch (route) {
       case '/bill-form':
-        return <BillForm />;
+        return <AddEvent />;
       case '/person-form':
         return <PersonForm />;
       case '/bill-summary':
