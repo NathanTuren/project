@@ -10,8 +10,14 @@ body {
   }
   
   .App h1 {
-    font-size: 20em;
+    font-size: 10em;
     text-align: left;
     color: #ffffff; /* White text color */
+  }
+  
+  .App h2 {
+    font-size: 5em;
+    text-align: center;
+    color: #ffffff;
   }
   
