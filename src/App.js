@@ -28,7 +28,7 @@ function App() {
     );
   };
 
-   
+
 
   const renderRoute = () => {
     switch (route) {
