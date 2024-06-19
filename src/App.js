@@ -15,15 +15,20 @@ function App() {
   const renderLandingPage = () => {
     return (
       <div className="App">
-        <h1>Bill Splitter</h1>
+        <h1>DivideWell</h1>
         <div className="landing-buttons">
           <button onClick={() => navigateTo('/Add-Event')}>Bill Form</button>
           <button onClick={() => navigateTo('/person-form')}>Person Form</button>
           <button onClick={() => navigateTo('/bill-summary')}>Bill Summary</button>
         </div>
+        <div>
+          <button className='tester-button' onClick={() => navigateTo('/Test-Button')}>Test Button</button>
+        </div>
       </div>
     );
   };
+
+   
 
   const renderRoute = () => {
     switch (route) {

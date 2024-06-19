@@ -15,9 +15,20 @@ body {
     color: #ffffff; /* White text color */
   }
   
-  .App h2 {
+  .landing-buttons {
     font-size: 5em;
-    text-align: center;
-    color: #ffffff;
+    text-align: left;
+    border: none;
+    background-color: transparent;
+    box-shadow: none;
   }
+  
+  .tester-button {
+    font-size: 5em;
+    text-align: left;
+    border: none;
+    background-color: transparent;
+    box-shadow: none;
+  }
+
   
