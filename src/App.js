@@ -1,4 +1,3 @@
-// App.js
 import React, { useState } from 'react';
 import './App.css'; // Import app.css file for styles
 import BillForm from './Components/BillForm';
@@ -13,6 +12,19 @@ function App() {
     window.history.pushState(null, '', newRoute);
   };
 
+  const renderLandingPage = () => {
+    return (
+      <div className="App">
+        <h1>Bill Splitter</h1>
+        <div className="landing-buttons">
+          <button onClick={() => navigateTo('/bill-form')}>Bill Form</button>
+          <button onClick={() => navigateTo('/person-form')}>Person Form</button>
+          <button onClick={() => navigateTo('/bill-summary')}>Bill Summary</button>
+        </div>
+      </div>
+    );
+  };
+
   const renderRoute = () => {
     switch (route) {
       case '/bill-form':
@@ -22,26 +34,12 @@ function App() {
       case '/bill-summary':
         return <BillSummary />;
       default:
-        return <h2>Welcome to Bill Splitter App</h2>;
+        return renderLandingPage(); // Render landing page by default
     }
   };
 
   return (
-    <div className="App">
-      <h1>Bill Splitter</h1>
-      
-        <ul>
-          <li>
-            <button onClick={() => navigateTo('/bill-form')}>Bill Form</button>
-          </li>
-          <li>
-            <button onClick={() => navigateTo('/person-form')}>Person Form</button>
-          </li>
-          <li>
-            <button onClick={() => navigateTo('/bill-summary')}>Bill Summary</button>
-          </li>
-        </ul>
-
+    <div>
       {renderRoute()}
     </div>
   );
