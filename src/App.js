@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './App.css'; // Import app.css file for styles
-import { AddEvent, CostInput} from './Components/AddEvent';
+import AddEvent from './Components/AddEvent';
 import PersonForm from './Components/PersonForm';
 import BillSummary from './Components/BillSummary';
 
@@ -33,7 +33,7 @@ function App() {
   const renderRoute = () => {
     switch (route) {
       case '/AddEvent':
-        return <AddEvent />;
+        return <AddEvent/>;
       case '/person-form':
         return <PersonForm />;
       case '/bill-summary':

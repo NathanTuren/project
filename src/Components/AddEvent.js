@@ -2,44 +2,50 @@
 import React, { useState } from 'react';
 
 function AddEvent() {
-  
-  return (
-    <div>
-      <h2>Add Event</h2>
-      {/* Form for bill input */}
-      <button onClick={() => window.location.href = '/'}>Home</button> {/* Home button */}
-    </div>
-
-  );
-
-}
-
-
-function CostInput() {
   const [cost, setCost] = useState('');
+  const [people, setPeople] = useState(1); // Default to 1 person if not specified
 
   const handleCostChange = (event) => {
     setCost(event.target.value);
   };
 
+  const handlePeopleChange = (event) => {
+    setPeople(event.target.value);
+  };
+
   const handleSubmit = () => {
-    alert(`The cost entered is $${cost}`);
+    if (people > 0) {
+      const costPerPerson = calculateCostPerPerson(cost, people);
+      alert(`Each person owes: $${costPerPerson.toFixed(2)}`);
+    } else {
+      alert("Please enter a valid number of people (greater than 0).");
+    }
+  };
+
+  // Function to calculate the cost per person
+  const calculateCostPerPerson = (totalCost, numberOfPeople) => {
+    return totalCost / numberOfPeople;
   };
 
   return (
     <div>
-      <h1>Enter Cost</h1>
+      <h2>Enter Cost and Number of People</h2>
       <input
         type="number"
         value={cost}
         onChange={handleCostChange}
-        placeholder="Enter cost"
+        placeholder="Enter total cost"
       />
-      <button onClick={handleSubmit}>Submit Cost</button>
+      <input
+        type="number"
+        value={people}
+        min="1"
+        onChange={handlePeopleChange}
+        placeholder="Number of people"
+      />
+      <button onClick={handleSubmit}>Split Cost</button>
     </div>
   );
 }
 
-export {AddEvent, CostInput};
-
-
+export default AddEvent;
