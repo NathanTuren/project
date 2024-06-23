@@ -1,51 +1,81 @@
 // components/AddEvent.js
 import React, { useState } from 'react';
 
-function AddEvent() {
-  const [cost, setCost] = useState('');
-  const [people, setPeople] = useState(1); // Default to 1 person if not specified
+function EventManager() {
+  const [events, setEvents] = useState([]);
+  const [newEvent, setNewEvent] = useState({
+    name: '',
+    description: '',
+    cost: '',
+    people: 1
+  });
 
-  const handleCostChange = (event) => {
-    setCost(event.target.value);
-  };
-
-  const handlePeopleChange = (event) => {
-    setPeople(event.target.value);
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setNewEvent(prevState => ({
+      ...prevState,
+      [name]: value
+    }));
   };
 
   const handleSubmit = () => {
-    if (people > 0) {
-      const costPerPerson = calculateCostPerPerson(cost, people);
-      alert(`Each person owes: $${costPerPerson.toFixed(2)}`);
+    if (newEvent.people > 0 && newEvent.cost && newEvent.name) {
+      const costPerPerson = newEvent.cost / newEvent.people;
+      const eventToAdd = {
+        ...newEvent,
+        costPerPerson: costPerPerson.toFixed(2)
+      };
+      setEvents(prevEvents => [...prevEvents, eventToAdd]);
+      setNewEvent({ name: '', description: '', cost: '', people: 1 }); // Reset form
+      alert(`Event added! ${newEvent.name} - Each person owes: $${costPerPerson.toFixed(2)}`);
     } else {
-      alert("Please enter a valid number of people (greater than 0).");
+      alert("Please fill in all fields correctly and ensure the number of people is greater than 0.");
     }
-  };
-
-  // Function to calculate the cost per person
-  const calculateCostPerPerson = (totalCost, numberOfPeople) => {
-    return totalCost / numberOfPeople;
   };
 
   return (
     <div>
-      <h2>Enter Cost and Number of People</h2>
+      <h1>Event Manager</h1>
       <input
-        type="number"
-        value={cost}
-        onChange={handleCostChange}
-        placeholder="Enter total cost"
+        type="text"
+        value={newEvent.name}
+        onChange={handleChange}
+        name="name"
+        placeholder="Event name"
+      />
+      <textarea
+        value={newEvent.description}
+        onChange={handleChange}
+        name="description"
+        placeholder="Event description"
       />
       <input
         type="number"
-        value={people}
+        value={newEvent.cost}
+        onChange={handleChange}
+        name="cost"
+        placeholder="Total cost"
+      />
+      <input
+        type="number"
+        value={newEvent.people}
+        onChange={handleChange}
+        name="people"
         min="1"
-        onChange={handlePeopleChange}
         placeholder="Number of people"
       />
-      <button onClick={handleSubmit}>Split Cost</button>
+      <button onClick={handleSubmit}>Add Event</button>
+      <div>
+        <h2>Current Events</h2>
+        {events.map((event, index) => (
+          <div key={index}>
+            <h3>{event.name} - {event.costPerPerson} per person</h3>
+            <p>{event.description}</p>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }
 
-export default AddEvent;
+export default EventManager;
