@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import './App.css'; // Import app.css file for styles
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import EventManager from './Components/EventManager';
 import PersonForm from './Components/PersonForm';
 import BillSummary from './Components/BillSummary';
@@ -28,8 +29,6 @@ function App() {
     );
   };
 
-
-
   const renderRoute = () => {
     switch (route) {
       case '/EventManager':
@@ -42,6 +41,15 @@ function App() {
         return renderLandingPage(); // Render landing page by default
     }
   };
+
+  <Router>
+    <Routes>
+      <Route path="/App" element={<renderLandingPage />} />
+      <Route path="/EventsManager" element={<EventManager />} />
+      <Route path="/person-form" element={<PersonForm />} />
+      <Route path="/bill-summary" element={<BillSummary />} />
+    </Routes>
+  </Router>
 
   return (
     <div>

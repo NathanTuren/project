@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 function EventManager() {
+  const navigate = useNavigate();
+  const [route, setRoute] = useState(window.location.pathname);
   const [events, setEvents] = useState([]);
   const [editingId, setEditingId] = useState(null);
   const [newEvent, setNewEvent] = useState({
@@ -45,6 +48,7 @@ function EventManager() {
   return (
     <div>
       <h1>Event Manager</h1>
+      <button onClick={() => navigate('/home')}> Home </button>
       <input
         type="text"
         value={newEvent.name}
