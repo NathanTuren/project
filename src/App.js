@@ -1,59 +1,29 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import './App.css'; // Import app.css file for styles
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import EventManager from './Components/EventManager';
 import PersonForm from './Components/PersonForm';
 import BillSummary from './Components/BillSummary';
+import LandingPage from './Components/LandingPage';
 
 function App() {
-  const [route, setRoute] = useState(window.location.pathname);
+  const [currentPage, setCurrentPage] = useState('landing');
 
-  const navigateTo = (newRoute) => {
-    setRoute(newRoute);
-    window.history.pushState(null, '', newRoute);
-  };
-
-  const renderLandingPage = () => {
-    return (
-      <div className="App">
-        <h1>DivideWell</h1>
-        <div className="landing-buttons">
-          <button onClick={() => navigateTo('/EventManager')}>Add Event</button>
-          <button onClick={() => navigateTo('/person-form')}>Person Form</button>
-          <button onClick={() => navigateTo('/bill-summary')}>Bill Summary</button>
-        </div>
-        <div>
-          <button className='tester-button' onClick={() => navigateTo('/AddEvent')}>Test Button</button>
-        </div>
-      </div>
-    );
-  };
-
-  const renderRoute = () => {
-    switch (route) {
-      case '/EventManager':
-        return <EventManager/>;
-      case '/person-form':
-        return <PersonForm />;
-      case '/bill-summary':
-        return <BillSummary />;
+  const renderPage = () => {
+    switch (currentPage) {
+      case 'event-manager':
+        return <EventManager setCurrentPage={setCurrentPage} />;
+      case 'person-form':
+        return <PersonForm setCurrentPage={setCurrentPage}/>;
+      case 'bill-summary':
+        return <BillSummary setCurrentPage={setCurrentPage} />;
       default:
-        return renderLandingPage(); // Render landing page by default
+        return <LandingPage setCurrentPage={setCurrentPage} />;
     }
   };
 
-  <Router>
-    <Routes>
-      <Route path="/App" element={<renderLandingPage />} />
-      <Route path="/EventsManager" element={<EventManager />} />
-      <Route path="/person-form" element={<PersonForm />} />
-      <Route path="/bill-summary" element={<BillSummary />} />
-    </Routes>
-  </Router>
-
   return (
     <div>
-      {renderRoute()}
+      {renderPage()}
     </div>
   );
 }

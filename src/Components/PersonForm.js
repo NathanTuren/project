@@ -1,6 +1,6 @@
 import React from 'react';
 
-function PersonForm() {
+function PersonForm({ setCurrentPage }) {
   return (
     <div>
       <h2>Person Form</h2>

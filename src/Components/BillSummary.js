@@ -1,7 +1,7 @@
 // components/BillSummary.js
 import React from 'react';
 
-function BillSummary() {
+function BillSummary({ setCurrentPage }) {
   return (
     <div>
       <h2>Bill Summary</h2>
